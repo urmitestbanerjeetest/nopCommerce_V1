@@ -22,7 +22,7 @@ public class landingPage {
         WebElement featuredProductsElement = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[1]/strong"));
         return featuredProductsElement.getText();
     }
-    public String getWelcomeToStoreText() throws InterruptedException {
+    public String getWelcomeToStoreText() {
 
         WebElement welcomeElement = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2"));
         return welcomeElement.getText();
