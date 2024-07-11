@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class testngNopCommerce extends base {
+public class testngNopCommerce extends base2 {
     Logger log = Logger.getLogger(testngNopCommerce.class.getName());
     WebDriver driver;
     landingPage lp;
@@ -115,6 +115,7 @@ public class testngNopCommerce extends base {
     @Test(priority = 6)
     public void validateShoppingCartPage() throws InterruptedException {
         scp = cpp.clickShoppingCartBtn();
+        //TODO Use assert assert not null with the error msg also for scp page for each page
         String actual = ShoppingCartPage.driver.getCurrentUrl();
         String expected = scpURL;
         if (actual.equals(expected))
@@ -149,6 +150,7 @@ public class testngNopCommerce extends base {
 
     @Test(priority = 9)
     public void validateCheckoutAsGuestPage() throws InterruptedException {
+//TODO use assert assert not null o validate cogp page
         cogp = scp.clickIAgreeAndCheckoutBox();
         String actual = driver.getCurrentUrl();
         String expected = checkOutasGuestpURL;
@@ -272,22 +274,25 @@ public class testngNopCommerce extends base {
         Assert.assertEquals(checkOutCompletedPage.driver.getCurrentUrl(), checkOutCompletedPageURL);
         log.info("Check out completed page is successfully displayed test 18 passed!");
     }
-        @Test(priority = 18)
-        public void validateThankYouText() throws InterruptedException {
+
+    @Test(priority = 18)
+    public void validateThankYouText() throws InterruptedException {
         String thankYouText = cocp.getThankYouText();
-        Assert.assertEquals(thankYouText,"Thank you");
+        Assert.assertEquals(thankYouText, "Thank you");
         log.info(thankYouText);
-        log.info("Check Out completed Page text "+thankYouText+" is displayed test 19 passed!");
+        log.info("Check Out completed Page text " + thankYouText + " is displayed test 19 passed!");
         Thread.sleep(ThreadTimeDelay.TIME_DELAY_MS);
     }
-   @Test(priority = 19)
-   public void validateClickNopCommerceIcon() throws InterruptedException {
+
+    @Test(priority = 19)
+    public void validateClickNopCommerceIcon() throws InterruptedException {
         cocp.clickNopCommerceIcon();
-       Thread.sleep(ThreadTimeDelay.TIME_DELAY_MS);
-   }
+        Thread.sleep(ThreadTimeDelay.TIME_DELAY_MS);
+    }
+
     @AfterClass
     public void tearDown() {
-        //      driver.close();
+        driver.close();
     }
 }
 
